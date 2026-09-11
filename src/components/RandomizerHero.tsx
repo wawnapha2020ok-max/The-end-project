@@ -32,18 +32,21 @@ export default function RandomizerHero({
   ];
 
   return (
-    <div style={{
-      textAlign: 'center',
-      padding: '24px 20px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#FFFFFF',
-      borderRadius: 'var(--radius-xl)',
-      border: '1px solid var(--border)',
-      boxShadow: 'var(--shadow-md)',
-    }}>
+    <div
+      className="hero-card"
+      style={{
+        textAlign: 'center',
+        padding: '24px 20px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#FFFFFF',
+        borderRadius: 'var(--radius-xl)',
+        border: '1px solid var(--border)',
+        boxShadow: 'var(--shadow-md)',
+      }}
+    >
       {/* Sub-header: Style selector */}
       <div style={{
         display: 'flex',
@@ -92,20 +95,22 @@ export default function RandomizerHero({
       </div>
 
       {/* Dual Big Action Buttons */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        gap: 16,
-        width: '100%',
-      }}>
-        {/* Button 1: Smart Chef Generator (สร้างเมนูใหม่จากของในตู้) */}
+      <div
+        className="hero-buttons-wrapper"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: 16,
+          width: '100%',
+        }}
+      >
         <button
           type="button"
           onClick={() => onGenerateChefRecipe(chosenStyle)}
           disabled={selectedCount === 0 || isGenerating}
-          className={isGenerating ? '' : 'animate-pulse-glow'}
+          className={`hero-btn-primary ${isGenerating ? '' : 'animate-pulse-glow'}`}
           style={{
             position: 'relative',
             background: selectedCount > 0
@@ -145,6 +150,7 @@ export default function RandomizerHero({
           type="button"
           onClick={onRandomize}
           disabled={isRolling || eligibleCount === 0}
+          className="hero-btn-secondary"
           style={{
             position: 'relative',
             background: eligibleCount > 0

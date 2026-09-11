@@ -131,6 +131,7 @@ export default function ResultModal({
 
   return (
     <div
+      className="mobile-bottom-sheet-overlay"
       style={{
         position: 'fixed',
         inset: 0,
@@ -146,7 +147,7 @@ export default function ResultModal({
       onClick={onClose}
     >
       <div
-        className="animate-pop-in"
+        className="animate-pop-in mobile-bottom-sheet-card"
         onClick={(e) => e.stopPropagation()}
         style={{
           background: '#FFFFFF',

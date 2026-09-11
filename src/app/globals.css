@@ -294,6 +294,10 @@ input, select, textarea {
   .show-on-mobile {
     display: none !important;
   }
+
+  .hide-on-mobile {
+    display: inline-flex !important;
+  }
 }
 
 /* Extra small phones (iPhone SE, Galaxy A series <= 380px) */
@@ -310,13 +314,13 @@ input, select, textarea {
   left: 0;
   right: 0;
   z-index: 45;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.08);
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-  display: flex;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+  display: none; /* hidden by default, shown via .show-on-mobile on mobile */
   align-items: center;
   gap: 10px;
 }

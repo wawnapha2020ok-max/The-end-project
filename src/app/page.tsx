@@ -549,23 +549,27 @@ export default function Home() {
       />
 
       {/* Main Container */}
-      <main style={{
-        maxWidth: 1200,
-        margin: '0 auto',
-        padding: '24px 20px 60px',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 22,
-      }}>
+      <main
+        className="main-content-container"
+        style={{
+          maxWidth: 1200,
+          margin: '0 auto',
+          padding: '24px 20px 80px',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 22,
+        }}
+      >
         {/* Toast Alert */}
         {toastMessage && (
           <div
             className="animate-pop-in"
             style={{
               position: 'fixed',
-              bottom: 24,
-              right: 24,
+              bottom: 90,
+              left: '50%',
+              transform: 'translateX(-50%)',
               background: '#1E293B',
               color: '#FFFFFF',
               padding: '12px 20px',
@@ -578,6 +582,8 @@ export default function Home() {
               alignItems: 'center',
               gap: 8,
               border: '1px solid rgba(255,255,255,0.1)',
+              whiteSpace: 'nowrap',
+              maxWidth: 'calc(100vw - 32px)',
             }}
           >
             <span>{toastMessage}</span>
@@ -720,6 +726,70 @@ export default function Home() {
           Ready for <strong>Vercel Deployment</strong> with <strong>Supabase Database</strong>
         </div>
       </footer>
+
+      {/* Mobile Sticky Bottom Navigation Bar - only visible on phones */}
+      <div className="mobile-sticky-action-bar show-on-mobile">
+        <button
+          type="button"
+          onClick={() => setIsWheelModalOpen(true)}
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+            padding: '4px',
+            background: 'transparent',
+            color: 'var(--text-muted)',
+            fontSize: '0.65rem',
+            fontWeight: 600,
+          }}
+        >
+          <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>🎡</span>
+          <span>วงล้อสุ่ม</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setIsCalorieDrawerOpen(true)}
+          style={{
+            flex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+            padding: '4px 12px',
+            background: 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
+            color: '#FFFFFF',
+            borderRadius: 'var(--radius-md)',
+            fontSize: '0.72rem',
+            fontWeight: 700,
+          }}
+        >
+          <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>🔥</span>
+          <span>{todayCaloriesTotal}/{calorieGoal} kcal</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setIsSupabaseModalOpen(true)}
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+            padding: '4px',
+            background: 'transparent',
+            color: 'var(--text-muted)',
+            fontSize: '0.65rem',
+            fontWeight: 600,
+          }}
+        >
+          <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>🗄️</span>
+          <span>{isSupabaseLive ? 'Supabase' : 'Demo DB'}</span>
+        </button>
+      </div>
     </div>
   );
 }

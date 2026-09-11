@@ -190,13 +190,16 @@ export default function FridgeSection({
   });
 
   return (
-    <section style={{
-      background: '#FFFFFF',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid var(--border)',
-      padding: '24px',
-      boxShadow: 'var(--shadow-sm)',
-    }}>
+    <section
+      className="fridge-section-card"
+      style={{
+        background: '#FFFFFF',
+        borderRadius: 'var(--radius-lg)',
+        border: '1px solid var(--border)',
+        padding: '24px',
+        boxShadow: 'var(--shadow-sm)',
+      }}
+    >
       {/* Header & Quick Action Buttons */}
       <div style={{
         display: 'flex',
@@ -584,14 +587,17 @@ export default function FridgeSection({
       </div>
 
       {/* Ingredients Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(135px, 1fr))',
-        gap: 10,
-        maxHeight: 420,
-        overflowY: 'auto',
-        paddingRight: 4,
-      }}>
+      <div
+        className="fridge-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(135px, 1fr))',
+          gap: 10,
+          maxHeight: 420,
+          overflowY: 'auto',
+          paddingRight: 4,
+        }}
+      >
         {filteredIngredients.map(ing => {
           const isSelected = selectedIds.has(ing.id);
           const isStaple = stapleIds.has(ing.id);
@@ -599,6 +605,7 @@ export default function FridgeSection({
           return (
             <div
               key={ing.id}
+              className="ingredient-item-chip"
               onClick={() => onToggleIngredient(ing.id)}
               style={{
                 position: 'relative',
@@ -667,24 +674,30 @@ export default function FridgeSection({
               )}
 
               {/* Icon Emoji */}
-              <div style={{
-                fontSize: '1.9rem',
-                lineHeight: 1,
-                marginBottom: 6,
-                transform: isSelected ? 'scale(1.1)' : 'scale(1)',
-                transition: 'transform 0.2s ease',
-              }}>
+              <div
+                className="ingredient-item-icon"
+                style={{
+                  fontSize: '1.9rem',
+                  lineHeight: 1,
+                  marginBottom: 6,
+                  transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+                  transition: 'transform 0.2s ease',
+                }}
+              >
                 {ing.icon}
               </div>
 
               {/* Name */}
-              <div style={{
-                fontSize: '0.85rem',
-                fontWeight: isSelected ? 700 : 500,
-                color: isSelected ? 'var(--primary-hover)' : 'var(--text-main)',
-                textAlign: 'center',
-                lineHeight: 1.2,
-              }}>
+              <div
+                className="ingredient-item-name"
+                style={{
+                  fontSize: '0.85rem',
+                  fontWeight: isSelected ? 700 : 500,
+                  color: isSelected ? 'var(--primary-hover)' : 'var(--text-main)',
+                  textAlign: 'center',
+                  lineHeight: 1.2,
+                }}
+              >
                 {ing.name}
               </div>
 
@@ -703,10 +716,13 @@ export default function FridgeSection({
                   </span>
                 )}
                 {ing.cal_per_100g && (
-                  <span style={{
-                    fontSize: '0.68rem',
-                    color: isSelected ? 'var(--primary)' : 'var(--text-muted)',
-                  }}>
+                  <span
+                    className="ingredient-item-cal"
+                    style={{
+                      fontSize: '0.68rem',
+                      color: isSelected ? 'var(--primary)' : 'var(--text-muted)',
+                    }}
+                  >
                     ~{ing.cal_per_100g} kcal
                   </span>
                 )}
