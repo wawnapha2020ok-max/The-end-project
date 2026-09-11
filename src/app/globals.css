@@ -1,0 +1,322 @@
+:root {
+  --primary: #FF6422;
+  --primary-hover: #E85110;
+  --primary-light: #FFF0E8;
+  --primary-glow: rgba(255, 100, 34, 0.35);
+
+  --accent: #FFA62B;
+  --accent-light: #FFF7EB;
+  --accent-dark: #D97706;
+
+  --success: #10B981;
+  --success-light: #ECFDF5;
+  --success-dark: #047857;
+
+  --danger: #EF4444;
+  --danger-light: #FEF2F2;
+
+  --warning: #F59E0B;
+  --warning-light: #FFFBEB;
+
+  --bg-main: #FFFDF9;
+  --card-bg: #FFFFFF;
+  --card-bg-subtle: #F8FAFC;
+  --border: #F1E8DF;
+  --border-active: #FFD2B8;
+
+  --text-main: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(255, 100, 34, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 16px 36px rgba(255, 100, 34, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 30px rgba(255, 100, 34, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-prompt), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 100, 34, 0.45);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 100, 34, 0.7);
+  }
+}
+
+@keyframes bounce-slight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes spin-slot {
+  0% { transform: translateY(0); filter: blur(0); }
+  50% { transform: translateY(-30px); filter: blur(2px); opacity: 0.7; }
+  100% { transform: translateY(0); filter: blur(0); opacity: 1; }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-up-mobile {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.4s infinite ease-in-out;
+}
+
+.animate-bounce-slight {
+  animation: bounce-slight 2s infinite ease-in-out;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+::-webkit-scrollbar-thumb {
+  background: #E2D7CC;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D1C0B0;
+}
+
+/* Glassmorphism & UI helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------- */
+/* Smartphone & Responsive Media Queries (Mobile First UX)       */
+/* ------------------------------------------------------------- */
+
+/* Main Container on Mobile */
+@media (max-width: 768px) {
+  .main-content-container {
+    padding: 12px 12px 96px !important;
+    gap: 16px !important;
+  }
+
+  .header-container {
+    padding: 10px 12px !important;
+  }
+
+  .header-subtitle {
+    display: none !important;
+  }
+
+  .hero-card {
+    padding: 18px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-buttons-wrapper {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .hero-btn-primary {
+    width: 100% !important;
+    padding: 14px 20px !important;
+    font-size: 1.05rem !important;
+    justify-content: center !important;
+  }
+
+  .hero-btn-secondary {
+    width: 100% !important;
+    padding: 13px 20px !important;
+    font-size: 0.98rem !important;
+    justify-content: center !important;
+  }
+
+  /* Ingredients Grid on Smartphones (3 neat columns) */
+  .fridge-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    max-height: 380px !important;
+  }
+
+  .fridge-section-card {
+    padding: 16px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  .ingredient-item-chip {
+    padding: 10px 4px 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .ingredient-item-icon {
+    font-size: 1.6rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .ingredient-item-name {
+    font-size: 0.78rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .ingredient-item-cal {
+    font-size: 0.62rem !important;
+  }
+
+  /* Modal turns into Bottom Sheet on Mobile */
+  .mobile-bottom-sheet-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .mobile-bottom-sheet-card {
+    border-radius: 24px 24px 0 0 !important;
+    max-height: 90vh !important;
+    width: 100% !important;
+    animation: slide-up-mobile 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
+
+  .mobile-recipe-image {
+    height: 190px !important;
+  }
+
+  .mobile-modal-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .mobile-modal-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Hide elements on mobile */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  /* Show only on mobile */
+  .show-on-mobile {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}
+
+/* Extra small phones (iPhone SE, Galaxy A series <= 380px) */
+@media (max-width: 380px) {
+  .fridge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile Sticky Bottom Floating Action Bar */
+.mobile-sticky-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 45;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.08);
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
